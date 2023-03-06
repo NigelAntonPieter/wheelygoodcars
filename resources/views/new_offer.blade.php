@@ -10,7 +10,7 @@
             <div class="kenteken">
                 <div class="inset">
                 <div class="blue"></div>
-                <input type="text" name="license_plate" value="{{ $license_plate }}" disabled="" required=""/> 
+                <input type="text" name="license_plate" value="{{ $license_plate }}"  required=""/> 
                 </div>
             </div>
             <div class="car-offer-form">

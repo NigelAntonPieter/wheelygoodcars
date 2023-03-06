@@ -29,7 +29,7 @@ class CarController extends Controller
     {   
         $license_plate =  $request->input('license_plate');
 
-        // return redirect('show_new_offer_page', compact('license_plate'));
+       
         return view('new_offer', [
             'license_plate' => $license_plate,
         ]);
