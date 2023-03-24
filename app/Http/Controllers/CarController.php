@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -12,7 +13,15 @@ class CarController extends Controller
     
     public function show_all_cars_page()
     {
-        return view('cars');
+        $car = Car::all();
+        return view('cars' , ['cars' => $car]);
+    }
+
+    
+    public function show_all_mycars_page()
+    {
+        $mycars = Auth::user()->cars;
+        return view('mycars')->with ('mycars' , $mycars);
     }
 
     public function offer_page()
@@ -67,10 +76,27 @@ class CarController extends Controller
         $newCar->weight = $request->input('weight');
         $newCar->color = $request->input('color');
 
+       Storage::makeDirectory('public/images');
+       $src = Storage::putFile('public/images' , $request->file('image'));
+       $src = str_replace('public' , 'storage' , $src);
+       $newCar->photo = $src;
+
+
+
         $newCar->save();
 
         return redirect('/');
 
 
     }
+
+    public function delete($id)
+    {
+        $mycars = Car::findorFail($id);
+        $mycars->delete();
+
+        return redirect('mycars/show');
+    }
+
+   
 }

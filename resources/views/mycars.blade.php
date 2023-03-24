@@ -13,50 +13,45 @@
         <tbody>
 
 
-            @foreach ($cars as $car)
+            @foreach ($mycars as $mycar)
                 
             
                     <tr>
                         <th class="table_item car_picture">
-                            @if ($car->image == null)
+                            @if ($mycar->image == null)
                                 <img src="{{ URL::asset('/img/placeholder-small.jpg') }}" alt="profile Pic" height="85"
                                     width="100">
                             @else
-                                {{ $car->image }}
+                                {{ $mycar->image }}
                             @endif
                         </th>
                         <td>
                             <div class="kenteken license_plate_in_list">
                                 <div class="inset">
                                     <div class="blue"></div>
-                                    <input type="text" name="license_plate" disabled="" value="{{ $car->license_plate }}"
+                                    <input type="text" name="license_plate" disabled="" value="{{ $mycar->license_plate }}"
                                         required="" />
                                 </div>
-                                <div class="sale_status">
-                                    @isset($car->sold_at)
-                                        <p class="status_text border border-dark rounded text-light bg-danger">VERKOCHT</p>
-                                    @endisset
-                                    @empty($car->sold_at)
-                                        <p class="status_text border border-dark rounded text-light bg-success">TE KOOP</p>
-                                    @endempty
-                            </div>
                             </div>
                         </td>
                         <td>
                             <div class="table-item">
-                                <p> €{{ $car->price }}</p>
+                                <p> €{{ $mycar->price }}</p>
+                               
                             </div>
                         </td>
                         <td>
                             <div class="table-item">
-                                <p>{{ $car->make }} {{ $car->model }}</p>
+                                <p>{{ $mycar->make }} {{ $mycar->model }}</p>
                             </div>
-                       
-                            
-                    
+                        </td>
+                        <td>
+                        <div class="table-item">
+                            <h3><a class ="bi-trash" id="delete" href={{route('delete_car', $mycar->id)}}></a></h3>
+                        </div>
                         </td>
                     </tr>
-                
+             
                 @endforeach
 
 

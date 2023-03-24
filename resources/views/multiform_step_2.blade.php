@@ -2,8 +2,7 @@
 
 @section('main')
     <div class="d-flex justify-content-end">
-        <form action="{{ Route('process_new_offer') }}" method="post">
-        <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ Route('process_new_offer') }}" enctype="multipart/form-data">
+        <form action="{{ Route('process_new_car') }}" method="post">
             @csrf
             <div class="new-offer-heading">
                 <h1>Nieuw aanbod</h1>
@@ -11,20 +10,17 @@
             <div class="kenteken">
                 <div class="inset">
                 <div class="blue"></div>
-                <input type="text" name="license_plate" value="{{ $license_plate }}"  required=""/> 
+                <input type="text" name="license_plate" value="{{ $license_plate }}" required=""/> 
                 </div>
             </div>
+            
             <div class="car-offer-form">
                 <div class="row">
-                    <div class="form-group">
-                        <label for="image">Foto</label>
-                        <input type="file" id="image" name="image" class="form-control" accept="image/jpg , image/gif, image/jpeg" >
-                    </div>
-                    <div class="col-5">
+                    <div class="col-12">
                         <label for="brand">Merk</label>
                         <input type="text" class="form-control" name="brand" id="brand">
                     </div>
-                    <div class="col-5">
+                    <div class="col-12">
                         <label for="model">Model</label>
                         <input type="text" class="form-control" name="model" id="model">
                     </div>
@@ -37,14 +33,14 @@
                         <input type="number" class="form-control" name="doors" id="doors">
                     </div>
                     <div class="col-4">
-                        <label for="weight">Massa rijklaar</label>
+                        <label for="weight">Gewicht</label>
                         <input type="number" class="form-control" name="weight" id="weight">
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <label for="production_year">Jaar van productie</label>
                         <input type="number" class="form-control" name="production_year" id="production_year">
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <label for="color">kleur</label>
                         <input type="text" class="form-control" name="color" id="color">
                     </div> 
@@ -55,7 +51,7 @@
                         <div class="input-group">
                             <input class="form-control" id="distance" name="distance" type="text"/>
                             <div class="input-group-addon-kg">
-                                <input value="KMA" class="form-control bg-white" name="KM/H" disabled>
+                                <input value="KM" class="form-control bg-white" name="KM/H" disabled>
                             </div>
                         </div>
                     </div>

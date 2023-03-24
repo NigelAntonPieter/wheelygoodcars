@@ -20,9 +20,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/cars/show', [CarController::class, 'show_all_cars_page'])->name('cars');
+   
     Route::get('/cars/offer/post/' , [CarController::class , 'offer_page'])->name('post_offer');//LICENSE PLATE
     Route::get('/cars/offer/new/{license_plate}', [CarController::class, 'new_offer_page'])->name('new_offer');// CAR FORM
+    Route::get('/mycars/show', [CarController::class, 'show_all_mycars_page'])->name('mycars');
+    Route::get('/delete/{id}', [CarController::class, 'delete'])->name('delete_car');
+
 
     // POST Routes
 
@@ -32,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/cars/offer/post/license-plate', [CarController::class, 'submit_license_plate'])->name('submit_license_plate');
 
 });
+
+Route::get('/cars/show', [CarController::class, 'show_all_cars_page'])->name('cars');
+
 
 
 
